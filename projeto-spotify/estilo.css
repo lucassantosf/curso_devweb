@@ -47,12 +47,13 @@ nav.navbar-transparente{
 	margin: 16px 10px;
 }
 
-.navbar-inverse .navbar-nav>li>a {
+.navbar-inverse .navbar-nav>li>a , footer .nav a{
 	color: white;
 }
 
-.navbar-inverse .navbar-nav>li>a:hover {
+.navbar-inverse .navbar-nav>li>a:hover, footer .nav a:hover{
 	color: #9bf0e1;
+	background: none;
 }
 
 
@@ -125,6 +126,17 @@ nav.navbar-transparente{
 	padding-left: 80px;
 }
 
+/*************** Rodape ***************/
+footer{
+	background: #000;
+	padding: 50px 0px 20px 0px;
+	position: relative;
+
+}
+
+.item-rede-social{
+	float: right;
+}
 /*************** Tipografia ***************/
 h1{
 	font-size: 100px;
@@ -151,4 +163,10 @@ h3{
 
 #recursos h3{
 	color: #9bf8e1;
+}
+
+#rodape h4{
+	color: #919496;
+	font-size: 12px;
+	text-transform: uppercase;
 }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<title>Eventos - mouse </title>
+
+	<script type="text/javascript">
+		
+		//onclick
+		//ondblclick
+		//onmousedown
+		//onmouseover
+		//onmouseout
+
+		function msgBoasVindas(){
+			alert('Boas Vindas');
+		}
+	</script>
+
+</head>
+
+<body>
+	<div style="margin-left: 300px;">
+		<div onclick="msgBoasVindas()" style="background: #CCC; height: 150px; width: 150px; text-align: center; float: left;">
+			onclick
+		</div>
+
+		<div ondblclick="msgBoasVindas()" style="background: #BBB; height: 150px; width: 150px; text-align: center; float: left;">
+			ondblclick
+		</div>
+
+		<div onmousedown="msgBoasVindas()" style="background: #DDD; height: 150px; width: 150px; text-align: center; float: left;">
+			onmousedown
+		</div>
+
+		<div onmouseout="msgBoasVindas()" style="background: #EEE; height: 150px; width: 150px; text-align: center; float: left;">
+			onmouseout
+		</div>
+	</div>
+</body>
+</html>

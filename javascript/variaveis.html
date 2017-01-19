@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<title>Aula 1 </title>
+
+	<script type="text/javascript">
+		
+		//string '' ""
+		var texto1 = 'Aula de ';
+		var texto2 = 'Javascript'
+		var texto3 = prompt('Digite seu nome');
+		//float - desclar sem acento especial, casa decimal separado por virgula
+		var numeroFracionado = 10.7;
+
+		//int
+		var numero = -7; 
+
+		//boolean
+		var teste = true; // true / false
+
+		document.write(texto1 + texto2);
+		document.write('<br>Olá '+ texto3 + '<br>');
+
+		//array 
+		var lista_frutas = ['Banana','Maça','Morango','Abacaxi','Limão','Laranja'];
+		document.write(lista_frutas[4]);
+
+		//array multidimensional
+		var lista_coisas = Array();
+
+		lista_coisas['frutas'] = Array();
+		lista_coisas['objetos'] = Array();
+
+		lista_coisas['frutas'][0] = 'Banana';
+		lista_coisas['frutas'][1] = 'Maça';
+		lista_coisas['frutas'][2] = 'Morango';
+		
+		lista_coisas['objetos'][0] = 'Caderno';
+		lista_coisas['objetos'][1] = 'Livro';
+		lista_coisas['objetos'][2] = 'Caneta';
+
+		document.write('<br>');
+		
+		document.write(lista_coisas['objetos'][2] + ' de '+ lista_coisas['frutas'][2]);
+		
+	</script>
+</head>
+
+<body>
+
+</body>
+</html>

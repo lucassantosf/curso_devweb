@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+
+	<title>Jquery eventos - teclado</title>
+
+	<!-- bootstrap - link cdn -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- jquery -->
+	<script src="jquery-3.1.1.js"></script>
+
+	<script type="text/javascript">
+
+			//keydown
+			//keypress - menos CTRL - ALT
+			//keyup - tecla é liberada
+
+			$(document).ready( function(){
+
+				$('#campo1').keydown( function(){
+					alert('Botao pressionado');
+				});
+
+			});
+		</script>
+		
+	</head>
+
+	<body>
+		
+		<input type="text" id="campo1">	
+	</body>
+</html>

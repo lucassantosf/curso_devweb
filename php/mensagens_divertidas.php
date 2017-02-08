@@ -9,30 +9,40 @@
 	<body>
 
 		<?php 
-			// int
-			$valor_inteiro = 1 * 4;
-			echo $valor_inteiro;
+			
+		
 
-			echo '<br />';
-			$valor_inteiro = $valor_inteiro * 2;
-			echo $valor_inteiro;
+			// array unidimencional
+			
+			
+			$mensagem['a'] = "Tente ser bem melhor que você mesmo";
+			$mensagem['b'] = "Mesmo quando quero falar sobre mim, não acho as palavras certas que me classifiquem";
+			$mensagem['c'] = "Sou um pouco de tudo o que há, do que eu gostaria de ser, sou uma outra pessoa";
+			$mensagem[4] = "Alguem que não se existe, mas que parece com um monte de gente, que como eu, não se encaixa em nada.";
+			$mensagem[5] = "Muito mais fácil! Pessoas queridas, momentos vividos, tudo é saudade…";
+			
 
-			// float
-			echo '<br />';
-			$valor_fracionado = 10.7;
-			echo $valor_fracionado;
-			
-			// boolean
-			echo '<br />';
-			$estado = true; // false
-			echo $estado;
-			
-			// strings
-			echo '<br />';
-			$texto = "Curso PHP - $valor_inteiro ";
-			echo $texto;
-			
+			// outra forma de declaração
+			$teste = 'TESTE';
+			$mensagem = array('a' => "Muito mais fácil! Pessoas queridas, momentos vividos, tudo é saudade…" ,
+			'b' => "Mesmo quando quero falar sobre mim, não acho as palavras certas que me classifiquem",
+			'c' => true,
+			'd' => 10.7,
+			'e' => $teste);
+
+			var_dump($mensagem);
+			echo '<br/>';
+			print_r($mensagem);
+			echo '<br/>';
+			echo $mensagem['b'];
+		
+
+			//array multidimensional
+
+
+
 		?>
+
 		
 				
 	</body>

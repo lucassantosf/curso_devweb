@@ -1,0 +1,1 @@
+SELECT nome_curso,resumo FROM `tb_cursos` WHERE id_curso>3

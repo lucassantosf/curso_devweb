@@ -1,0 +1,5 @@
+alter table tb_cursos add column carga_hora varchar(4) null;
+
+alter table tb_cursos change carga_hora carga_horario int null;
+
+ALTER TABLE tb_cursos DROP carga_horario;

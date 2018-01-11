@@ -1,0 +1,2 @@
+INSERT INTO tb_cursos(ativo_sn, carga_horaria, data_inicio, id_curso, investimento, nome_curso, resumo) 
+VALUES ('s', 1,'20180111', 2, 0, 'Curso Básico HTML', 'Aprenda HTML 4')

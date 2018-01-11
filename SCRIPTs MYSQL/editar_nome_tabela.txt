@@ -1,0 +1,1 @@
+rename table tb_cursos_new to tb_cursos

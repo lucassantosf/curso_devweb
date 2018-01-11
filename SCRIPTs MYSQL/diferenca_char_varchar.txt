@@ -1,0 +1,2 @@
+Char - tamanho fixo e otimizado para pesquisa
+Varchar - Tamanho variável e tende a ocupar menos espaço em disco

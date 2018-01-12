@@ -1,0 +1,9 @@
+DELETE FROM <tabela> WHERE <condição>
+
+DELETE FROM tb_pessoas WHERE idade > 80;
+
+DELETE FROM `tb_pessoas` WHERE id = 5;
+
+DELETE FROM tb_pessoas WHERE idade = 20 AND interesse = 'esporte';
+
+DELETE FROM `tb_pessoas` WHERE estado = 'SP';

@@ -1,0 +1,9 @@
+UPDATE <tabela> SET <campo> = <valor> WHERE <condição>
+
+UPDATE tb_pessoas SET nome = "Foz Iguaçu" WHERE id = 3;
+
+UPDATE tb_pessoas SET interesse = 'Culinária' WHERE idade > 80;
+
+UPDATE tb_pessoas SET nome = 'José Silva', idade = 14, email = 'jose.silva@aa.com' WHERE id = 14;
+
+UPDATE tb_pessoas SET interesse = 'esporte' WHERE idade > 10 AND idade <= 20;

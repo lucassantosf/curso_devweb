@@ -1,0 +1,16 @@
+SELECT * FROM
+tb_funcionarios as f
+LEFT JOIN tb_funcionarios_dados_contato as fc ON (f.id_funcionario = fc.id_funcionario)
+
+SELECT * FROM
+tb_funcionarios as f
+LEFT JOIN tb_funcionarios_dados_contato as fc ON (f.id_funcionario = fc.id_funcionario)
+LEFT JOIN tb_funcionarios_dados_endereco as fe ON
+(f.id_funcionario = fe.id_funcionario)
+
+SELECT f.nome, f.matricula, fc.telefone_fixo, fc.telefone_celular, fe.endereço, fe.uf FROM
+tb_funcionarios as f
+LEFT JOIN tb_funcionarios_dados_contato as fc ON (f.id_funcionario = fc.id_funcionario)
+LEFT JOIN tb_funcionarios_dados_endereco as fe ON
+(f.id_funcionario = fe.id_funcionario)
+

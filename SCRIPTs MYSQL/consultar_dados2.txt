@@ -1,0 +1,10 @@
+select * from 'tb_pessoas' where idade < 39;
+
+SELECT * FROM `tb_pessoas` WHERE idade <= 20 AND estado = "MG"
+
+SELECT * FROM `tb_pessoas` WHERE idade <= 20 AND estado = "MG" AND interesse = "jogos"
+
+select * from 'tb_pessoas' where idade > 70;
+
+SELECT * FROM `tb_pessoas` WHERE estado = "SP" or estado = "BA";
+

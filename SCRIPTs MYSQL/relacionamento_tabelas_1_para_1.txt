@@ -1,0 +1,26 @@
+CREATE TABLE tb_funcionarios(
+	id_funcionarios int not null primary key auto_increment,
+	matricular varchar(20),
+	data_admissao datetime,
+	idade int,
+	sexo char(1)
+);
+
+CREATE TABLE tb_funcionarios_dados_contato(
+	id_funcionario_dados_contato int NOT null PRIMARY KEY AUTO_INCREMENT,
+    id_funcionario int NOT null,
+    telefone_fixo varchar(20),
+    telefone_celular varchar(20),
+    FOREIGN KEY (id_funcionario) REFERENCES tb_funcionarios(id_funcionario)
+);
+
+CREATE TABLE tb_funcionarios_dados_endereco(
+	id_funcionario_dados_endereco int not null PRIMARY KEY AUTO_INCREMENT,
+    id_funcionario int not null,
+    endereço varchar(100),
+    cidade varchar(50),
+    bairro varchar(50),
+    cep varchar(20),
+    uf char(2),
+    FOREIGN KEY(id_funcionario) REFERENCES tb_funcionarios(id_funcionario)
+);

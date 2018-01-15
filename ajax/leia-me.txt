@@ -1,0 +1,3 @@
+Para testar o projeto, executar em servidor Apache
+
+To test the project, play on Apache server

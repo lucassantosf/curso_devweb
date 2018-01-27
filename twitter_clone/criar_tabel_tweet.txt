@@ -1,0 +1,6 @@
+CREATE TABLE tweet(
+    id_tweet int NOT null PRIMARY KEY AUTO_INCREMENT,
+    id_usuario int NOT null,
+    tweet varchar(140) NOT null,
+    data_inclusao datetime DEFAULT CURRENT_TIMESTAMP /*Instante da inclusão no banco*/    
+);

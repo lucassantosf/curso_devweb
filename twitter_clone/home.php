@@ -19,7 +19,30 @@
 
 		<!-- bootstrap - link cdn -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	
+		
+		<script type="text/javascript">
+
+			$(document).ready(function(){
+				//associar o evento de click ao botão
+				$('#btn_tweet').click(function(){
+					
+					if($('#texto_tweet').val().length > 0 ){
+						$.ajax({
+							url: 'inclui_tweet.php',
+							method: 'post',
+							data: $('#form_tweet').serialize(),
+							success: function(data){
+								$('#texto_tweet').val('');
+								alert('Incluido com sucesso');
+							}
+						});
+					}
+
+				});
+			});
+
+		</script>
+
 	</head>
 
 	<body>
@@ -48,23 +71,46 @@
 
 	    <div class="container">
 	    	
-	    	<br /><br />
+	    	<div class="col-md-3">
+	    		<div class="panel panel-default">
+	    			<div class="panel-body">
+	    				<h4><?=  $_SESSION['usuario'] ?></h4>
 
-	    	<div class="col-md-4"></div>
-	    	<div class="col-md-4">
-	    		Usuário autenticado
-	    		<br />
-	    		<?=  $_SESSION['usuario'] ?>
-	    		<br />
-	    		<?=  $_SESSION['email'] ?>
+	    				<hr />
+
+	    				<div class="col-md-6">
+	    					TWEETS <br />1
+	    				</div>
+	    				<div class="col-md-6">
+	    					SEGUIDORES <br />1
+	    				</div>
+	    			</div>
+
+	    		</div>
+	    	</div>
+
+	    	<div class="col-md-6">
+	    		<div class="panel panel-default">
+	    			<div class="panel-body">
+	    				<form id="form_tweet" class="input-group">
+	    					<input type="text" id="texto_tweet" class="form-control" placeholder="O que esta acontencendo agora?" maxlength="140" name="texto_tweet"/>
+	    					<span class="input-group-btn">
+	    						<button class="btn btn-default" id="btn_tweet" type="button">Tweet</button>
+	    					</span>
+	    				</form>
+	    			</div>
+	    		</div>
 			</div>
-			<div class="col-md-4"></div>
 
-			<div class="clearfix"></div>
-			<br />
-			<div class="col-md-4"></div>
-			<div class="col-md-4"></div>
-			<div class="col-md-4"></div>
+			<div class="col-md-3">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h4><a href="#">Procurar Pessoas</a></h4>
+					</div>
+				</div>
+			</div> 
+
+			
 
 		</div>
 

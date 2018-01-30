@@ -22,7 +22,11 @@
 
     	while ($registro = mysqli_fetch_array($resultado_id, MYSQLI_ASSOC)) {
     		echo '<a href="#" class="list-group-item">';
-    			echo '<strong>'.$registro['usuario'].'</strong> <small> - '.$registro['email'].' </small> ';
+    			echo '<strong>'.$registro['usuario'].'</strong> <small> - '.$registro['email'].'</small>';
+                echo '<p class="list-group-item-text pull-right">';
+                    echo '<button type="button" class="btn btn-default btn_seguir" data-id_usuario="'.$registro['id'].'" >Seguir</button>';
+                echo '</p>';
+                echo '<div class="clearfix"></div>';
     		echo '</a>';
     	}
 
@@ -30,4 +34,19 @@
     	echo 'Erro na consulta do Banco de Dados';
     }
     
-?>
+?>              
+
+               
+
+                
+
+                
+
+          
+                    
+                
+              
+
+                
+
+         

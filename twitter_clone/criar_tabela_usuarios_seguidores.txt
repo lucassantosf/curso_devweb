@@ -1,0 +1,6 @@
+create table usuario_seguidores(
+	id_usuario_seguido int not null primary key auto_increment,
+	id_usuario int not null,
+	seguindo_id_usuario int not null,
+	data_registro datetime default current_timestamp
+)

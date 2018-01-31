@@ -9,16 +9,16 @@
     require_once('db.class.php');
 
     $id_usuario = $_SESSION['id_usuario'];
-    $seguir_id_usuario = $_POST['seguir_id_usuario'];
+    $deixar_seguir_id_usuario = $_POST['deixar_seguir_id_usuario'];
 
-    if($id_usuario == '' || $seguir_id_usuario == ''){
+    if($id_usuario == '' || $deixar_seguir_id_usuario == ''){
         die();
     }
 
     $objDb = new db();
     $link = $objDb->conecta_mysql();
     
-    $sql = " INSERT INTO usuarios_seguidores(id_usuario, seguindo_id_usuario)values($id_usuario, $seguir_id_usuario) ";
+    $sql = " DELETE FROM usuarios_seguidores WHERE id_usuario = $id_usuario AND seguindo_id_usuario = $deixar_seguir_id_usuario ";
 
     mysqli_query($link, $sql);
 

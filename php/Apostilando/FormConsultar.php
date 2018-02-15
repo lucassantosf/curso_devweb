@@ -1,12 +1,3 @@
-<?php
-
-	require_once('db.class.php');
-	$objDb = new db();
-    $link = $objDb->conecta_mysql();
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -14,7 +5,19 @@
 	<title>Estudo PHP</title>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
 
+	<script type="text/javascript">
+
+		function valida_form(){
+			if(document.getElementById("nome").value == "" && document.getElementById("telefone").value == ""){
+				alert('Por favor, preencher campos');				
+				return false;
+			}
+		}
+
+	</script>
+
 </head>
+
 <body>
 	
 	<div class="container">
@@ -22,75 +25,24 @@
 			<div class="col-md-6">
 
 				<h2>Formulário Para Consultar Telefone  </h2>
-				<form method="post" action="FormConsultar.php">					
+				<form method="post" action="consultar.php" name="form1" onsubmit="return valida_form()">					
 					<div class="row">					
-						<div class="col-md-10"><input type="text" name="nome" placeholder="Consultar pelo Nome" maxlength="50"></div>
+						<div class="col-md-10"><input type="text" name="nome" id="nome" placeholder="Consultar pelo Nome" maxlength="50"/></div>
 					</div>
 
 					<div class="row">						
-						<div class="col-md-10"><input type="text" name="telefone" placeholder="Consultar pelo Telefone" maxlength="10"></div>	
+						<div class="col-md-10"><input type="text" name="telefone" id="telefone" placeholder="Consultar pelo Telefone" maxlength="10"></div>	
 					</div>
 										
 					<div class="row">
 						<div class="col-md-12">
-							<button type="submit">Consultar</button>
-
-							<?php
-								$nome = $_POST['nome'];
-								$telefone = $_POST['telefone'];
-
-								if($nome != '' ){									
-									$sql = "Select * from contatos where nome like '%$nome%'" ;
-									$resultado = mysqli_query($link,$sql);
-									if($resultado){
-			
-										while($registro = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
-											$nome = $registro['nome'];
-											echo '<br/>';
-											echo 'Contato:'.$nome.' Tel: '.$registro['telefone'];
-										}
-
-									}
-									else{
-										echo "Erro ao executar consulta no Banco de Dados";
-									}
-
-								}else if($telefone != '' ){									
-									
-									$sql = "Select * from contatos where telefone like '%$telefone%' " ;
-									$resultado = mysqli_query($link,$sql);
-									if($resultado){
-			
-										while($registro = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
-											$nome = $registro['nome'];
-											echo '<br/>';
-											echo 'Contato:'.$nome.' Tel: '.$registro['telefone'];
-										}
-
-									}else{
-										echo "Erro ao executar consulta no Banco de Dados";
-									}
-								}								
-														
-							?>
-
+							<button type="submit" onclick="validarCampos">Consultar</button>
 						</div>
-					</div>				
-						
+					</div>						
 					
 				</form>	
-			</div>
-
-			<div class="col-md-6">
-
-			<div>
-
-		</div>
-		<div class="row">
-			<div class="col-md-6">
 				
 			</div>
-			<div class="col-md-6"></div>
 
 		</div>
 

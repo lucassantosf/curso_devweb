@@ -15,7 +15,7 @@
 		<div class="row">
 			<div class="col-md-4"></div>
 			<div class="col-md-2">
-					<form action="controler.php" method="post">
+					<form action="cadastrarUsuario.php" method="post">
 							<input type="text" name="login" value="" placeholder="Login" />
 							<input type="password" name="senha" value="" placeholder="Senha" />
 							

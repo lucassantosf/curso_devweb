@@ -15,13 +15,13 @@
 		<div class="row">
 			<div class="col-md-4"></div>
 			<div class="col-md-2">
-					<form action="controler.php" method="post">
+					<form action="logar.php" method="post">
 							<input type="text" name="login" placeholder="Login" />
 							<input type="password" name="senha" placeholder="Senha" />
 							
 			</div>
 			<div class="col-md-6">
-							<button class="btn btn-info" type="submit" name="enviar">Entrar</button>
+							<button class="btn btn-info" type="submit">Entrar</button>
 							<label style="color: #858585;">Não é cadastrado?</label><a href="cadastrar.php">Cadastrar</a>
 					</form>
 			</div>			

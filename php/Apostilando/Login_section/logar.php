@@ -18,6 +18,7 @@
 		$dados = mysqli_fetch_array($resultado_id);
 		if($dados['tipo_perfil'] == 2 && (isset($dados['login'])) ){
 			$_SESSION['login'] = $dados['login'];
+			$_SESSION['id_login'] = $dados['id_usuario'];
 			header('Location:paginas/pagina2.php');	
 
 		}else if($dados['tipo_perfil'] == 1 && (isset($dados['login'])) ){
@@ -31,21 +32,6 @@
 
 	}else{
 		echo 'Falha ao pesquisar usuário';
-	}
-
-	
-		/*
-		if(isset($dados_usuario['usuario'])){
-            
-            header('Location: home.php');
-
-        }else{
-
-            header('Location: index.php?erro=1');
-
-        }
-		*/
-
-	
+	}	
 
 ?>

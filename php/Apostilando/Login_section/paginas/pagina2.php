@@ -11,11 +11,7 @@
 
 	$usuario_logado = $_SESSION['login'];
 	$id = $_SESSION['id_login'];
-	
-	function deletarUser ($id_usuario){
-
-
-	}
+		
 
 ?>
 
@@ -25,7 +21,23 @@
 	<title>ACESSO USER - <?= $usuario_logado ?></title>
 	<meta charset="utf-8">	
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
 
+			function atualizaUsuarios(){
+					//carregar os Tweets
+					$.ajax({
+						url: 'get_tweet.php',
+						success: function(data){
+							$('#usuarios_existentes').html(data);							
+						}
+					});
+			}
+
+
+		}
+	</script>
 </head>
 <body>
 	<div class="container">
@@ -56,7 +68,7 @@
 					<div class="panel-heading">
 						<h4>Usuários Existentes<a href="cadastrar.php" style="margin-left: 10px;width: 20px;height: 20px;"><span style="margin-left: -5px;" class="glyphicon glyphicon-plus"></span></a></h4>						
 					</div>
-					<div class="panel-body">
+					<div class="panel-body" id="usuarios_existentes">
 
 						<?php
 							$consultarUsuarios = "select * from tb_usuario where id_usuario <> $id ";
@@ -64,9 +76,11 @@
 							if($resultado_query){
 								while ($registro = mysqli_fetch_array($resultado_query, MYSQLI_ASSOC)) {
 									echo 'Usuário -> '.$registro['login'].' - Tipo de Perfil -> '.$registro['tipo_perfil'];	
-									
-									echo '<br/>';		
-									
+									echo '<a onclick="deletar('.$registro['id_usuario'].')"; style="margin-left:5px;">';
+									echo '<span class="glyphicon glyphicon-remove" style="margin-left: 0px;"></span>';
+									echo '</a>';
+									echo '<hr class="hr-primary">';
+																	
 								}
 							}else{
 								echo 'Erro ao pesquisar por usuários';
@@ -89,21 +103,24 @@
 	<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		
-		function deletar(){
-
-		    $.ajax({
-		        method: "post",
-		        url: "deletarUsuario.php",
-		        data: $("#form").serialize(),
-		        success: function(data){
-		            alert(data);
-		        }
-
+		function deletar(id_usuario){
+			var request = $.ajax({
+		      	url: "http://localhost:8080/php/Login_section/paginas/deletarUsuario.php",
+		      	method: "POST",
+		      	data: { id_usuario: id_usuario},
+		      		      	
 		    });
-		}
 
-  		
-}
+		    request.done(function( msg ){
+		        document.getElementById('usuarios_existentes').innerHTML = location.reload();
+		    });
+
+		    request.fail(function( jqXHR, textStatus ) {
+		        
+		    });				    
+		}
+	
+		
 
 	</script>
 </body>

@@ -21,23 +21,7 @@
 	<title>ACESSO USER - <?= $usuario_logado ?></title>
 	<meta charset="utf-8">	
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
-	<script type="text/javascript">
-		
-		$(document).ready(function(){
-
-			function atualizaUsuarios(){
-					//carregar os Tweets
-					$.ajax({
-						url: 'get_tweet.php',
-						success: function(data){
-							$('#usuarios_existentes').html(data);							
-						}
-					});
-			}
-
-
-		}
-	</script>
+	
 </head>
 <body>
 	<div class="container">
@@ -52,18 +36,6 @@
 		<div class="row">
 			<div class="col-md-6">
 				
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3>Funções</h3>
-					</div>
-					<div class="panel-body">						
-						<a href="deslogar.php">Sair</a>
-					</div>
-						
-				</div>
-			</div>	
-
-			<div class="col-md-6">
 				<div class="panel panel-info">
 					<div class="panel-heading">
 						<h4>Usuários Existentes<a href="cadastrar.php" style="margin-left: 10px;width: 20px;height: 20px;"><span style="margin-left: -5px;" class="glyphicon glyphicon-plus"></span></a></h4>						
@@ -79,16 +51,29 @@
 									echo '<a onclick="deletar('.$registro['id_usuario'].')"; style="margin-left:5px;">';
 									echo '<span class="glyphicon glyphicon-remove" style="margin-left: 0px;"></span>';
 									echo '</a>';
-									echo '<hr class="hr-primary">';
-																	
+									echo '<hr class="hr-primary">';																	
 								}
 							}else{
 								echo 'Erro ao pesquisar por usuários';
 							}
 
-						?>
-						
+						?>						
 					</div>
+				</div>
+				
+			</div>	
+
+			<div class="col-md-6">
+				<div class="panel panel-warning">
+					<div class="panel-heading">
+						<h4>Funções</h4>
+					</div>
+					<div class="panel-body">	
+						<a href="Form_alterarSenha.php" style="color: #562620;">Alterar Senha</a>
+						<hr style="color: #562620;">					
+						<a href="deslogar.php" style="color: #562620;">Sair</a>
+					</div>
+						
 				</div>
 			</div>
 

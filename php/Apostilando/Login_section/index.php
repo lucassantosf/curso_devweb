@@ -1,3 +1,10 @@
+<?php
+	require_once('db.class.php');
+	$objetoDB = new db();
+	$link = $objetoDB->conecta_mysql();
+	$sql = "SELECT * FROM tb_contatos";
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +32,23 @@
 							<label style="color: #858585;">Não é cadastrado?</label><a href="cadastrar.php">Cadastrar</a>
 					</form>
 			</div>			
+		</div>
+
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<?php
+					$resultado_query = mysqli_query($link,$sql);
+					if($resultado_query){
+						while ($registro = mysqli_fetch_array($resultado_query, MYSQLI_ASSOC)) {
+							echo $registro['descricao'].' - '.$registro['telefone'];							
+							echo '<hr class="hr-primary">';																	
+						}
+					}else{
+						echo 'Erro ao pesquisar por usuários';
+					}
+				?>		
+			</div>
 		</div>
 	</div>
 </body>

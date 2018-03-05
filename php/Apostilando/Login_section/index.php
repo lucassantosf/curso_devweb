@@ -1,36 +1,34 @@
-<?php
-	
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Tela Inicial</title>
 	<meta charset="utf-8">	
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
-	<script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript">
+		
+
+	</script>
+	<script type="text/javascript">
 		
 		$(document).ready(function(){
-		    
-		    $('#procurar').click( function(){
 
-		    	if($('#search').val().length > 0){
-		    		$.ajax({
-		    			url: 'procurar_contatos.php',
+			$('#procurar').click( function(){
+
+				if($('#telefone').val().length > 0 ){					
+					$.ajax({
+						url: 'paginas/procurar_contatos.php',
 						method: 'post',
-						data: $('#search').serialize(),
-						success: function(data) {
-							
+						data: $('#formtel').serialize(),
+						success: function(data){
+							$('#contatos').html(data);
 						}
-		    		});
-		    	};
+					});
 
-		    });
-		    		    
+				}
+			});
+			  
 		});
-
-		
+		    	
 
 	</script>
 </head>
@@ -59,8 +57,10 @@
 			<div class="col-md-2"></div>
 			<div class="col-md-10">
 				<h4>Pesquisa Rápida de Contatos</h4><br/>
-				<input type="text" name="telefone" placeholder="Tel" id="search">
-				<button id="procurar">Procurar</button>
+				<form id="formtel">
+					<input type="text" name="telefone" id="telefone" placeholder="Tel" >
+					<button id="procurar" type="button">Procurar</button>
+				</form>
 			</div>
 		</div>
 		<div class="row">

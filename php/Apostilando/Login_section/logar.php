@@ -16,6 +16,7 @@
 	if($resultado_id){
 
 		$dados = mysqli_fetch_array($resultado_id);
+		
 		if($dados['tipo_perfil'] == 2 && (isset($dados['login'])) ){
 			$_SESSION['login'] = $dados['login'];
 			$_SESSION['id_login'] = $dados['id_usuario'];
@@ -23,10 +24,11 @@
 
 		}else if($dados['tipo_perfil'] == 1 && (isset($dados['login'])) ){
 			$_SESSION['login'] = $dados['login'];
+			$_SESSION['id_login'] = $dados['id_usuario'];
 			header('Location:paginas/pagina1.php');
 			
 		}else{
-			echo 'Autenticação inválida';
+			header('Location: index.php?erro=1');
 		}
 
 

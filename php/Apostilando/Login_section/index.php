@@ -1,3 +1,6 @@
+<?php
+	$erro = isset($_GET['erro']) ? $_GET['erro'] : 0;
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,18 +18,24 @@
 			$('#procurar').click( function(){
 
 				if($('#telefone').val().length > 0 ){					
-					$.ajax({
-						url: 'paginas/procurar_contatos.php',
-						method: 'post',
-						data: $('#formtel').serialize(),
-						success: function(data){
-							$('#contatos').html(data);
-						}
-					});
+					
 
 				}
 			});
+
+			$('#telefone').keyup(function(){
+				$.ajax({
+					url: 'paginas/procurar_contatos.php',
+					method: 'post',
+					data: $('#formtel').serialize(),
+					success: function(data){
+						$('#contatos').html(data);
+					}
+				});
+			});
 			  
+			
+
 		});
 		    	
 
@@ -47,9 +56,16 @@
 							<input type="password" name="senha" placeholder="Senha" />							
 			</div>
 			<div class="col-md-3">
-							<button class="btn btn-info" type="submit">Entrar</button>
+							<button class="btn btn-info" type="submit" id="logar">Entrar</button>
 							<label style="color: #858585;">Não é cadastrado?</label><a href="cadastrar.php">Cadastrar</a>
 					</form>
+					<?php 
+
+								if ($erro == 1) {
+									echo '<font color="#FF0000">Usuario ou senha inválido(s)</font>';
+								}
+
+					?>
 			</div>			
 		</div>
 
@@ -58,8 +74,7 @@
 			<div class="col-md-10">
 				<h4>Pesquisa Rápida de Contatos</h4><br/>
 				<form id="formtel">
-					<input type="text" name="telefone" id="telefone" placeholder="Tel" >
-					<button id="procurar" type="button">Procurar</button>
+					<input type="text" name="telefone" id="telefone" placeholder="Tel" >					
 				</form>
 			</div>
 		</div>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JOGO DA MEMÓRIA</title>
+	<meta charset="utf-8">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<h2>Seja Bem vindo</h2>
+			<h2>Jogo da Memória</h2>
+		</div>
+
+		<div class="row">
+			
+			<div class="col-md-12">
+				<img src="imagens/verso.jpg" style="width:150px;height:250px; padding-right: 50px;" id="imagem" onclick="virarCarta()">
+				<img src="imagens/verso.jpg" style="width:150px;height:250px; padding-right: 50px;" class="imagem">
+				<img src="imagens/verso.jpg" style="width:150px;height:250px; padding-right: 50px;" class="imagem">
+				<img src="imagens/verso.jpg" style="width:150px;height:250px; padding-right: 50px;" class="imagem">
+				<img src="imagens/verso.jpg" style="width:150px;height:250px; padding-right: 50px;" class="imagem">
+				<img src="imagens/verso.jpg" style="width:150px;height:250px; padding-right: 50px;" class="imagem">
+			</div>
+
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		var array = 'imagens/1.jpgp';
+		
+		function virarCarta(){
+			document.getElementById('imagem').src = 'imagens/1.jpg';
+		} 
+
+	</script>
+</body>
+</html>

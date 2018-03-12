@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exer7</title>
+</head>
+<script type="text/javascript">
+	function calcular(){
+		var numero = parseInt(document.getElementById('num').value);
+		if(numero < 10){
+			document.getElementById('num').value = "Insuficiente";
+		}else if(numero >= 10 && numero < 14){
+			document.getElementById('num').value = "Bom";
+		}else{
+			document.getElementById('num').value = "Muito Bom";
+		}
+	}
+</script>
+<body>
+<input type="text" id="num">
+
+<button onclick="calcular()">Verificar</button>
+
+
+</body>
+</html>

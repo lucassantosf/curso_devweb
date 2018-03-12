@@ -1,0 +1,4 @@
+function escrever(){
+	alert('Olá');
+}
+

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>PrimeFaces</title>
+</h:head>
+<h:body>
+	<h:form id="form1">
+		<p:panel id="panel" header="Cadastrar Clientes">
+
+			<p:messages id="messages" />
+			<p:panelGrid columns="2">
+
+				<p:outputLabel for="nome" value="Nome:" />
+				<p:inputText id="nome" value="#{clienteBean.cliente.nomecliente}" />
+
+				<p:outputLabel for="email" value="Email:" />
+				<p:inputText id="email" value="#{clienteBean.cliente.emailcliente}" />
+
+				<p:outputLabel for="fone" value="Fone:" />
+				<p:inputText id="fone" value="#{clienteBean.cliente.fonecliente}" />
+
+				<p:outputLabel for="cpf" value="CPF/CNPJ:" />
+				<p:inputText id="cpf" value="#{clienteBean.cliente.cpfcnpjcliente}" />
+
+				<p:outputLabel value="" />
+				<p:commandButton id="btnSalvar" icon="ui-icon-disk" value="Salvar"
+					update="@all" action="#{clienteBean.salvar}" />
+
+
+			</p:panelGrid>
+		</p:panel>
+	</h:form>
+
+	<p:panel header="Painel PrimeFaces">
+		<h:form id="formTCli">
+			<p:dataTable id="tCli" var="cli" value="#{clienteBean.listaClientes}">
+				<p:column headerText="Código">
+					<h:outputText value="#{cli.idcliente}" />
+				</p:column>
+
+				<p:column headerText="Nome">
+					<h:outputText value="#{cli.nomecliente}" />
+				</p:column>
+
+				<p:column headerText="Cpf/Cnpj">
+					<h:outputText value="#{cli.cpfcnpjcliente}" />
+				</p:column>
+
+				<p:column headerText="Telefone">
+					<h:outputText value="#{cli.fonecliente}" />
+				</p:column>
+
+				<p:column headerText="EXCLUIR">
+					<p:commandButton icon="ui-icon-trash" title="Excluir"
+						update="dlg:infosCli" onclick="PF('confirmation').show();">
+						<f:setPropertyActionListener value="#{cli}"
+							target="#{clienteBean.cliente}" />
+					</p:commandButton>
+				</p:column>
+
+				<p:column headerText="EDITAR" style="text-align: center">
+					<p:commandButton icon="ui-icon-pencil" title="Editar"
+						update="dlgEdit:infosCliEdit"
+						onclick="PF('confirmationEdit').show();">
+						<f:setPropertyActionListener value="#{cli}"
+							target="#{clienteBean.cliente}" />
+					</p:commandButton>
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+
+	</p:panel>
+
+	<p:dialog header="Deseja realmente excluir este registro?"
+		widgetVar="confirmation" modal="true" appendTo="@(body)"
+		resizable="false" responsive="true">
+		<h:form id="dlg">
+			<p:panelGrid id="infosCli" columns="2">
+				<p:outputLabel for="codigo" value="Código:" />
+				<p:inputText id="codigo" value="#{clienteBean.cliente.idcliente}"
+					readonly="true" />
+				<p:outputLabel for="nome" value="Nome:" />
+				<p:inputText id="nome" value="#{clienteBean.cliente.nomecliente}"
+					readonly="true" />
+				<p:commandButton id="btnSim" value="Sim"
+					oncomplete="PF('confirmation').hide(); retun false;"
+					action="#{clienteBean.excluir}" update=":formTCli:tCli" />
+				<p:commandButton id="btnNao" value="Não"
+					onclick="PF('confirmation').hide();" type="button" />
+			</p:panelGrid>
+		</h:form>
+	</p:dialog>
+
+	<p:dialog header="Como você deseja editar este contato?"
+		widgetVar="confirmationEdit" modal="true" appendTo="@(body)"
+		resizable="false" responsive="true">
+		<h:form id="dlgEdit">
+			<p:panelGrid id="infosCliEdit" columns="2">
+				<p:outputLabel for="codigo" value="Código:" />
+				<p:inputText id="codigo" value="#{clienteBean.cliente.idcliente}" />
+				<p:outputLabel for="nome" value="Nome:" />
+				<p:inputText id="nome" value="#{clienteBean.cliente.nomecliente}" />
+				<p:outputLabel for="email" value="Email:" />
+				<p:inputText id="email" value="#{clienteBean.cliente.emailcliente}" />
+				<p:outputLabel for="fone" value="Fone:" />
+				<p:inputText id="fone" value="#{clienteBean.cliente.fonecliente}" />
+				<p:outputLabel for="email" value="CPF:" />
+				<p:inputText id="cpf" value="#{clienteBean.cliente.cpfcnpjcliente}" />
+
+				<p:commandButton id="btnSim" value="Sim"
+					oncomplete="PF('confirmation').hide(); retun false;"
+					action="#{clienteBean.editar()}" update=":formTCli:tCli" />
+				<p:commandButton id="btnNao" value="Não"
+					onclick="PF('confirmation').hide();" type="button" />
+			</p:panelGrid>
+		</h:form>
+	</p:dialog>
+
+</h:body>
+</html>

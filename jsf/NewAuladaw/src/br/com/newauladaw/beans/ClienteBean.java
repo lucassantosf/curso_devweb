@@ -14,7 +14,7 @@ import br.com.newauladaw.modelo.Cliente;
 
 @ManagedBean
 @ViewScoped
-public class ClienteBean extends Serializable {
+public class ClienteBean extends Serializable{
 
 	private Cliente cliente;
 	private List<Cliente> listaClientes;
@@ -31,13 +31,13 @@ public class ClienteBean extends Serializable {
 		cliente = new Cliente();
 	}
 
-	public void excluir() throws Exception {
-		DaoCliente dao = new DaoCliente();
-		dao.excluir(cliente);
-		//FacesMessage fm = new FacesMessage("Excluído com Sucesso");
-		//FacesContext.getCurrentInstance().addMessage(null, fm);
-		cliente = new Cliente();
-	}
+	public void excluir() throws Exception{  
+		DaoCliente dao = new DaoCliente();  
+		dao.excluir(cliente);  
+		FacesMessage fm = new FacesMessage("Excluído com Sucesso");  
+		FacesContext.getCurrentInstance().addMessage(null, fm);  
+		cliente =  new Cliente();
+	} 
 
 	public void editar() throws Exception {
 		DaoCliente dao = new DaoCliente();

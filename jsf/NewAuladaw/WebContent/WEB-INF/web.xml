@@ -13,4 +13,19 @@
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>*.jsf</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<description>JAX-RS Tools Generated - Do not modify</description>
+  	<servlet-name>JAX-RS Servlet</servlet-name>
+  	<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+  	<init-param>
+  		<param-name>jersey.config.server.provider.packages</param-name>
+  		<param-value>br.com.newauladaw.service</param-value>
+  	</init-param>
+  	<load-on-startup>2</load-on-startup>  
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>JAX-RS Servlet</servlet-name>
+  	<url-pattern>/ws/*</url-pattern>
+  </servlet-mapping>
 </web-app>

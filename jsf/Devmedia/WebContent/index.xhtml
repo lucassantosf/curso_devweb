@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<h:body> 
+	<h:form id="form1">
+		<p:panel id="panel" header="Cadastrar Clientes">
+
+			<p:messages id="messages" />
+			<p:panelGrid columns="2" >
+			
+				<p:outputLabel for="nome" value="UserName:" />
+				<p:inputText id="nome" value="#{userBean.usuario.userName}" />
+
+				<p:outputLabel for="email" value="PassWord" />
+				<p:inputText id="email" value="#{userBean.usuario.password}" />
+
+				<p:outputLabel for="fone" value="Address:" />
+				<p:inputText id="fone" value="#{userBean.usuario.address}" />
+
+				<p:outputLabel for="cpf" value="Email:" />
+				<p:inputText id="cpf" value="#{userBean.usuario.email}" />
+
+				<p:outputLabel value="" />
+				<p:commandButton id="btnSalvar" icon="ui-icon-disk" value="Salvar" 
+				update="@all" action="#{userBean.salvar}" />
+				
+
+			</p:panelGrid>
+		</p:panel>
+	</h:form>
+
+
+
+
+
+</h:body> 
+</html>

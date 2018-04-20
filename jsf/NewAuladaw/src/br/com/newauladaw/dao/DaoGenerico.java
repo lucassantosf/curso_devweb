@@ -86,5 +86,29 @@ public class DaoGenerico<T> {
 		List<T> list = query.getResultList();
 		return list;
 	}
+	
+	public T consultarPorIdInt(Class<T> clazz, Integer codigo) {
+		EntityManager em = getEntityManager();
+		T t = null;
+		try{
+			t = em.find(clazz, codigo);
+		}finally{
+			em.close();
+		}
+		return t;
+	}
+	
+	public void removerInt(Class<T> clazz, Integer id) {
+		
+		EntityManager em = getEntityManager();
+		T t = em.find(clazz, id);
+		try{
+			em.getTransaction().begin();
+			em.remove(t);
+			em.getTransaction().commit();
+		}finally{
+			em.close();
+		}		
+	}
 
 }

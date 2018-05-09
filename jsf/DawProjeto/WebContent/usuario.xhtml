@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/estrutura.xhtml">
+    <ui:define name="menu">
+      <h:commandLink value="Inicio"  action="/estrutura.xhtml"/>
+    </ui:define>
+    <ui:define name="conteudo">
+      <h1>Cadastro de Usuário</h1>
+      <h:panelGrid id="dadosUsuario" columns="2">
+        <h:outputText id="nomeText" value="Nome:"/>
+        <h:inputText id="nome" label="Nome" value="" maxlength="200" size="100"/>
+        <h:outputText id="cpfText" value="CPF:"/>
+        <h:inputText id="cpf" label="CPF" value="" maxlength="14" size="20"/>
+        <h:outputText id="emailText" value="Email:"/>
+        <h:inputText id="email" label="Email" value="" maxlength="50" size="50"/>
+        <h:outputText id="perfilText" value="Perfil:"/>
+        
+      </h:panelGrid>
+      <br/>
+      
+      <br/><br/>
+      <h:dataTable id="usuarios" value="" var="usuario">
+        <h:column>
+          <f:facet name="header">
+            <h:outputText id="columnNome" value="Nome"/>
+          </f:facet>
+          <h:outputText id="nomeUsuario" value=""/>
+        </h:column>
+        <h:column>
+          <f:facet name="header">
+            <h:outputText id="columnCPF" value="CPF"/>
+          </f:facet>
+          <h:outputText id="cpfUsuario" value=""/>
+        </h:column>
+        <h:column>
+          <f:facet name="header">
+            <h:outputText id="columnEmail" value="Email"/>
+          </f:facet>
+          <h:outputText id="emailUsuario" value=""/>
+        </h:column>
+        <h:column>
+          <f:facet name="header">
+            <h:outputText id="columnPerfil" value="Perfil"/>
+          </f:facet>
+          <h:outputText id="perfilUsuario" value=""/>
+        </h:column>
+      </h:dataTable>
+    </ui:define>
+  </ui:composition>
+</html>

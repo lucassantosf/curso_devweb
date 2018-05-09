@@ -6,35 +6,31 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title><ui:insert name="Titulo"></ui:insert></title>
-</h:head>
-<h:body>
-
-<p:layout fullPage="true">
+    <title>Template Web</title>
+  </h:head>
+  <h:body>
  
-    <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-        <ui:include src="/cabecalho.xhtml" />
-    </p:layoutUnit>
+	<div id="page">
  
-    <p:layoutUnit position="south" size="100" header="Bottom" resizable="true" closable="true" collapsible="true">
-        <h:outputText value="South unit content." />
-    </p:layoutUnit>
+	    <div id="header">
+		<ui:insert name="header" >
+		  <ui:include src="/basicheader.xhtml" />
+		</ui:insert>
+	    </div>
  
-    <p:layoutUnit position="west" size="200" header="Left" resizable="true" closable="true" collapsible="true">
-        <h:outputText value="West unit content." />
-    </p:layoutUnit>
+	    <div id="content">
+	  	<ui:insert name="content" >
+	 	  <ui:include src="/basiccontent.xhtml" />
+	   	</ui:insert>
+	    </div>
  
-    <p:layoutUnit position="east" size="200" header="Right" resizable="true" closable="true" collapsible="true" effect="drop">
-        <h:outputText value="Right unit content." />
-    </p:layoutUnit>
+	    <div id="footer">
+	    	<ui:insert name="footer" >
+	    	  <ui:include src="/basicfooter.xhtml" />
+	    	</ui:insert>
+    	    </div>
  
-    <p:layoutUnit position="center">
-        <ui:insert></ui:insert>
-    </p:layoutUnit>
+        </div>
  
-</p:layout>
-
-
-</h:body>
+    </h:body>
 </html>

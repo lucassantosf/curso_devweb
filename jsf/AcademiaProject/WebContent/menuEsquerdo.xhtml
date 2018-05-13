@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+<ui:composition>
+	<h:form>
+		<p:menu toggleable="true">
+			<p:submenu label="Home">
+				<p:menuitem value="Home" outcome="index.jsf" actionListener="#" icon="ui-icon-home"/>
+			</p:submenu>
+			
+			<p:submenu label="Cliente">
+				<p:menuitem value="Alunos" outcome="telaAlunos.jsf" actionListener="#" icon="ui-icon-person"/>
+			</p:submenu>
+		</p:menu>
+	</h:form>	
+</ui:composition>
+</h:body>
+</html>

@@ -13,8 +13,13 @@
 				<p:menuitem value="Home" outcome="index.jsf" actionListener="#" icon="ui-icon-home"/>
 			</p:submenu>
 			
-			<p:submenu label="Cliente">
-				<p:menuitem value="Alunos" outcome="telaAlunos.jsf" actionListener="#" icon="ui-icon-person"/>
+			<p:submenu label="Alunos">
+				<p:menuitem value="Incluir Novo" outcome="telaAlunos.jsf" actionListener="#" icon="ui-icon-person"/>
+				<p:menuitem value="Consultar" outcome="tela_consultar_Alunos.jsf" actionListener="#" icon="ui-icon-person"/>
+			</p:submenu>
+			
+			<p:submenu label="Planos">
+				<p:menuitem value="Planos" outcome="telaPlanos.jsf" actionListener="#" icon="ui-icon-person"/>
 			</p:submenu>
 		</p:menu>
 	</h:form>	

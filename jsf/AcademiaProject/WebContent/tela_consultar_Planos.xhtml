@@ -7,7 +7,7 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Consulta</title>
+	<title>Consultar</title>
 </h:head>
 <h:body>
 	<p:menu toggleable="true">
@@ -16,58 +16,52 @@
 			</p:submenu>
 	</p:menu>
 	<p:panel header="Painel PrimeFaces" position="center">
-		<h:form id="formAluno">
+		<h:form id="formPlano">
 
-			<p:dataTable id="tAluno" var="alu" value="#{alunoBean.listaClientes}">
+			<p:dataTable id="tPlano" var="plan" value="#{planoBean.listaPlanos}">
 				<p:column headerText="Código">
-					<h:outputText value="#{alu.idaluno}" />
+					<h:outputText value="#{plan.idplano}" />
 				</p:column>
-				<p:column headerText="Nome">
-					<h:outputText value="#{alu.nomealuno}" />
+				<p:column headerText="Descricao">
+					<h:outputText value="#{plan.descplano}" />
 				</p:column>
-				<p:column headerText="Cpf">
-					<h:outputText value="#{alu.cpfaluno}" />
-				</p:column>
-				<p:column headerText="Email">
-					<h:outputText value="#{alu.emailaluno}" />
-				</p:column>
+				<p:column headerText="Valor Total:">
+					<h:outputText value="#{plan.valorplano}" />
+				</p:column>		
 
 				<p:column headerText="EXCLUIR">
 					<p:commandButton icon="ui-icon-trash" title="Excluir"
-						update="dlg:infosAluno" onclick="PF('confirmation').show();">
-						<f:setPropertyActionListener value="#{alu}"
-							target="#{alunoBean.aluno}" />
+						update="dlg:infosPlano" onclick="PF('confirmation').show();">
+						<f:setPropertyActionListener value="#{plan}"
+							target="#{planoBean.plano}" />
 					</p:commandButton>
 				</p:column>
 
 				<p:column headerText="EDITAR" style="text-align: center">
 					<p:commandButton icon="ui-icon-pencil" title="Editar"
-						update="dlgEdit:infosAlunoEdit"
+						update="dlgEdit:infosPlanoEdit"
 						onclick="PF('confirmationEdit').show();">
-						<f:setPropertyActionListener value="#{alu}"
-							target="#{alunoBean.aluno}" />
+						<f:setPropertyActionListener value="#{plan}"
+							target="#{planoBean.plano}" />
 					</p:commandButton>
 				</p:column>
 			</p:dataTable>
 		</h:form>
 	</p:panel>
 
-	<p:dialog header="Como você deseja editar este aluno?"
+	<p:dialog header="Como você deseja editar este plano?"
 		widgetVar="confirmationEdit" modal="true" appendTo="@(body)"
 		resizable="false" responsive="true">
 		<h:form id="dlgEdit">
-			<p:panelGrid id="infosAlunoEdit" columns="2">
+			<p:panelGrid id="infosPlanoEdit" columns="2">
 				<p:outputLabel for="codigo" value="Código:" />
-				<p:inputText id="codigo" value="#{alunoBean.aluno.idaluno}" />
-				<p:outputLabel for="nome" value="Nome:" />
-				<p:inputText id="nome" value="#{alunoBean.aluno.nomealuno}" />
-				<p:outputLabel for="email" value="Email:" />
-				<p:inputText id="email" value="#{alunoBean.aluno.emailaluno}" />
-				<p:outputLabel for="fone" value="CPF:" />
-				<p:inputText id="fone" value="#{alunoBean.aluno.cpfaluno}" />
+				<p:inputText id="codigo" value="#{planoBean.plano.idplano}" />
+				<p:outputLabel for="nome" value="Descricao:" />
+				<p:inputText id="nome" value="#{planoBean.plano.descplano}" />
+				<p:outputLabel for="email" value="Valor:" />
+				<p:inputText id="email" value="#{planoBean.plano.valorplano}" />				
 				<p:commandButton id="btnSim" value="Sim"
-					oncomplete="PF('confirmation').hide(); retun false;"
-					action="#{alunoBean.editar}" update=":formAluno:tAluno" />
+					oncomplete="PF('confirmation').hide(); retun false;" action="#{planoBean.editar}" update=":formPlano:tPlano" />
 				<p:commandButton id="btnNao" value="Não"
 					onclick="PF('confirmation').hide();" type="button" />
 			</p:panelGrid>
@@ -78,16 +72,14 @@
 		widgetVar="confirmation" modal="true" appendTo="@(body)"
 		resizable="false" responsive="true">
 		<h:form id="dlg">
-			<p:panelGrid id="infosAluno" columns="2">
+			<p:panelGrid id="infosPlano" columns="2">
 				<p:outputLabel for="codigo" value="Código:" />
-				<p:inputText id="codigo" value="#{alunoBean.aluno.idaluno}"
-					readonly="true" />
-				<p:outputLabel for="nome" value="Nome:" />
-				<p:inputText id="nome" value="#{alunoBean.aluno.nomealuno}"
-					readonly="true" />
+				<p:inputText id="codigo" value="#{planoBean.plano.idplano}" />
+				<p:outputLabel for="nome" value="Descricao:" />
+				<p:inputText id="nome" value="#{planoBean.plano.descplano}" />
 				<p:commandButton id="btnSim" value="Sim"
 					oncomplete="PF('confirmation').hide(); retun false;"
-					action="#{alunoBean.excluir}" update=":formAluno:tAluno" />
+					action="#{planoBean.excluir}" update=":formPlano:tPlano" />
 				<p:commandButton id="btnNao" value="Não"
 					onclick="PF('confirmation').hide();" type="button" />
 			</p:panelGrid>

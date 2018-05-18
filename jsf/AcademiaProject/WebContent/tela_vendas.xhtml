@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templatePrincipal.xhtml">
+<ui:define name="Titulo">Vendas</ui:define>
+
+<p:outputLabel>Tela Vendas</p:outputLabel>
+	<h:form id="formVenda">
+		<p:panel id="panel" header="Cadastrar Venda"
+			style="margin=bottom:10px;">
+			<p:messages id="messages" />
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Aluno um aluno:" />
+				<p:selectOneMenu value="#{vendaBean.alunoSelecionado}">
+					<f:selectItem itemLabel="Selecione um aluno"/>
+					<f:selectItems value="#{vendaBean.alunoselect}" />
+					<f:ajax event="change" render="alunoset" />
+				</p:selectOneMenu>
+								
+				<p:outputLabel value="Aluno selecionado" />
+				<h:panelGroup id="alunoset">
+					<h:outputText value="#{vendaBean.alunoSelecionado.idaluno} - " />
+					<h:outputText value="#{vendaBean.alunoSelecionado.nomealuno}" />
+				</h:panelGroup>				
+
+				<p:outputLabel value="Selecione um plano" />
+				<p:selectOneMenu value="#{vendaBean.planoSelecionado}">
+					<f:selectItem itemLabel="Selecione um plano"/>
+					<f:selectItems value="#{vendaBean.planoselect}" />
+					<f:ajax event="change" render="planoset" />
+				</p:selectOneMenu>
+								
+				<p:outputLabel value="Cliente selecionado" />
+				<h:panelGroup id="planoset">
+					<h:outputText value="#{vendaBean.planoSelecionado.idplano} - " />
+					<h:outputText value="#{vendaBean.planoSelecionado.descplano}" />
+				</h:panelGroup>	
+				
+				<p:outputLabel value="Digite a quantidade" />
+				<h:inputText value="#{vendaBean.qtde}"/>
+				
+				<p:outputLabel value="Adicionar:" />
+				<p:commandButton action="#{vendaBean.adicionarPlano}" value="Adicionar" update="tab2"></p:commandButton>
+			</p:panelGrid>
+			
+			<p:dataTable id="tab2" var="p" value="#{vendaBean.carrinhoCompras}" emptyMessage="Nenhum registro incluido." paginator="true" rows="5" paginatorPosition="top">
+				<p:column headerText="Quantidade" style="text-align: center" sortBy="#{p.itemvendaqtd}">
+					<h:outputText value="#{p.itemvendaqtd}" />
+				</p:column>
+				
+				<p:column headerText="Descricao do Produto" sortBy="#{p.plano.descplano}" filterBy="#{p.plano.descplano}">
+					<h:outputText value="#{p.plano.descplano}" />
+				</p:column>
+				
+				<p:column headerText="Valor" sortBy="#{p.plano.valorplano}">
+					<h:outputText value="#{p.plano.valorplano}" >
+						<f:convertNumber pattern="#,##0.00" />
+					</h:outputText>
+				</p:column>				
+
+				<p:column headerText="EXCLUIR">
+					<p:commandButton icon="ui-icon-trash" title="Excluir" action="#{vendaBean.excluirProdCarrinho}"
+						onclick="if(!confirm('Deseja realmente excluir o item #{p.plano.descplano}')) return false" update="tab2">
+						<f:setPropertyActionListener value="#{p}"
+							target="#{vendaBean.itemselecionado}" />
+							<f:ajax onevent="click" render="valor"></f:ajax>
+					</p:commandButton>
+				</p:column>			
+			</p:dataTable>
+			<br />
+			<p:panelGrid columns="2" >
+				<p:outputLabel value="O valor total é: R$ "/>
+				<h:outputText id="valor" value="#{vendaBean.valorTotal}" >
+					<f:convertNumber pattern="#,##0.00" />
+				</h:outputText>
+			</p:panelGrid>
+			<br />
+			
+			<p:panelGrid columns="2" >
+				<p:commandButton update="formVenda" action="#{vendaBean.finalizarVenda}" value="Finalizar Venda" ajax="false" />
+				<p:commandButton update="formVenda" action="#{vendaBean.limparTudo}" value="Limpar" ajax="false" />
+			</p:panelGrid>
+			
+			
+		</p:panel>
+	</h:form>
+	
+
+</ui:composition>
+</html>

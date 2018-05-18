@@ -58,4 +58,17 @@ public class DaoGenerico<T> {
 		return list;
 	}
 	
+	public T consultarPorIdInt(Class<T> clazz, Integer codigo){
+		EntityManager em = getEntityManager();
+		T t = null;
+		try{
+			t = em.find(clazz, codigo);
+			
+		}finally{
+			em.close();
+		}
+		return t;
+		
+	}
+	
 }

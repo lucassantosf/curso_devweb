@@ -1,7 +1,9 @@
 package br.com.academiaproject.modelo;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -81,7 +83,59 @@ public class Aluno implements Serializable {
 		getVendas().remove(venda);
 		venda.setAluno(null);
 
-		return venda;
+		return venda;		
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((cpfaluno == null) ? 0 : cpfaluno.hashCode());
+		result = prime * result
+				+ ((emailaluno == null) ? 0 : emailaluno.hashCode());
+		result = prime * result + ((idaluno == null) ? 0 : idaluno.hashCode());
+		result = prime * result
+				+ ((nomealuno == null) ? 0 : nomealuno.hashCode());
+		result = prime * result + ((vendas == null) ? 0 : vendas.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Aluno other = (Aluno) obj;
+		if (cpfaluno == null) {
+			if (other.cpfaluno != null)
+				return false;
+		} else if (!cpfaluno.equals(other.cpfaluno))
+			return false;
+		if (emailaluno == null) {
+			if (other.emailaluno != null)
+				return false;
+		} else if (!emailaluno.equals(other.emailaluno))
+			return false;
+		if (idaluno == null) {
+			if (other.idaluno != null)
+				return false;
+		} else if (!idaluno.equals(other.idaluno))
+			return false;
+		if (nomealuno == null) {
+			if (other.nomealuno != null)
+				return false;
+		} else if (!nomealuno.equals(other.nomealuno))
+			return false;
+		if (vendas == null) {
+			if (other.vendas != null)
+				return false;
+		} else if (!vendas.equals(other.vendas))
+			return false;
+		return true;
 	}
 
 }

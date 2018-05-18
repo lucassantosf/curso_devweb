@@ -1,9 +1,10 @@
 package br.com.academiaproject.modelo;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQuery(name="Plano.findAll", query="SELECT p FROM Plano p")
@@ -46,6 +47,44 @@ public class Plano implements Serializable {
 
 	public void setValorplano(double valorplano) {
 		this.valorplano = valorplano;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((descplano == null) ? 0 : descplano.hashCode());
+		result = prime * result + ((idplano == null) ? 0 : idplano.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(valorplano);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Plano other = (Plano) obj;
+		if (descplano == null) {
+			if (other.descplano != null)
+				return false;
+		} else if (!descplano.equals(other.descplano))
+			return false;
+		if (idplano == null) {
+			if (other.idplano != null)
+				return false;
+		} else if (!idplano.equals(other.idplano))
+			return false;
+		if (Double.doubleToLongBits(valorplano) != Double
+				.doubleToLongBits(other.valorplano))
+			return false;
+		return true;
 	}
 
 }

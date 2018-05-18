@@ -50,7 +50,8 @@ public class PlanoBean {
 		return plano;
 	}
 
-	public void setAluno(Plano plano) {
+
+	public void setPlano(Plano plano) {
 		this.plano = plano;
 	}
 

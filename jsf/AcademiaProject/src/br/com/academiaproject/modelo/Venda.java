@@ -1,9 +1,7 @@
 package br.com.academiaproject.modelo;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +16,7 @@ public class Venda implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idvenda;
 
 	@Temporal(TemporalType.DATE)
@@ -85,11 +84,9 @@ public class Venda implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((aluno == null) ? 0 : aluno.hashCode());
-		result = prime * result
-				+ ((datavenda == null) ? 0 : datavenda.hashCode());
+		result = prime * result + ((datavenda == null) ? 0 : datavenda.hashCode());
 		result = prime * result + ((idvenda == null) ? 0 : idvenda.hashCode());
-		result = prime * result
-				+ ((itemvendas == null) ? 0 : itemvendas.hashCode());
+		result = prime * result + ((itemvendas == null) ? 0 : itemvendas.hashCode());
 		return result;
 	}
 
@@ -124,5 +121,5 @@ public class Venda implements Serializable {
 			return false;
 		return true;
 	}
-
+	
 }

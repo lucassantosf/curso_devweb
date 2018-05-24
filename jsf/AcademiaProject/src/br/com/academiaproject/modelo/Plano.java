@@ -1,30 +1,34 @@
 package br.com.academiaproject.modelo;
 
 import java.io.Serializable;
+import javax.persistence.*;
+import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
 
+/**
+ * The persistent class for the plano database table.
+ * 
+ */
 @Entity
 @NamedQuery(name="Plano.findAll", query="SELECT p FROM Plano p")
 public class Plano implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idplano;
 
 	private String descplano;
 
 	private double valorplano;
-	
-	/*//bi-directional many-to-one association to Itemvenda
+	/*
+	//bi-directional many-to-one association to Itemvenda
 	@OneToMany(mappedBy="plano")
 	private List<Itemvenda> itemvendas;
 	*/
 	public Plano() {
 	}
-	
+
 	public Integer getIdplano() {
 		return this.idplano;
 	}
@@ -53,8 +57,7 @@ public class Plano implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((descplano == null) ? 0 : descplano.hashCode());
+		result = prime * result + ((descplano == null) ? 0 : descplano.hashCode());
 		result = prime * result + ((idplano == null) ? 0 : idplano.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(valorplano);
@@ -81,10 +84,8 @@ public class Plano implements Serializable {
 				return false;
 		} else if (!idplano.equals(other.idplano))
 			return false;
-		if (Double.doubleToLongBits(valorplano) != Double
-				.doubleToLongBits(other.valorplano))
+		if (Double.doubleToLongBits(valorplano) != Double.doubleToLongBits(other.valorplano))
 			return false;
 		return true;
 	}
-
 }

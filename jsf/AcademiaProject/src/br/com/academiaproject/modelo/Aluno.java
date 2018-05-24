@@ -1,9 +1,7 @@
 package br.com.academiaproject.modelo;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
 import java.util.List;
 
 
@@ -17,6 +15,7 @@ public class Aluno implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idaluno;
 
 	private String cpfaluno;
@@ -24,11 +23,11 @@ public class Aluno implements Serializable {
 	private String emailaluno;
 
 	private String nomealuno;
-
+	/*
 	//bi-directional many-to-one association to Venda
 	@OneToMany(mappedBy="aluno")
 	private List<Venda> vendas;
-
+	*/
 	public Aluno() {
 	}
 
@@ -64,40 +63,14 @@ public class Aluno implements Serializable {
 		this.nomealuno = nomealuno;
 	}
 
-	public List<Venda> getVendas() {
-		return this.vendas;
-	}
-
-	public void setVendas(List<Venda> vendas) {
-		this.vendas = vendas;
-	}
-
-	public Venda addVenda(Venda venda) {
-		getVendas().add(venda);
-		venda.setAluno(this);
-
-		return venda;
-	}
-
-	public Venda removeVenda(Venda venda) {
-		getVendas().remove(venda);
-		venda.setAluno(null);
-
-		return venda;		
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((cpfaluno == null) ? 0 : cpfaluno.hashCode());
-		result = prime * result
-				+ ((emailaluno == null) ? 0 : emailaluno.hashCode());
+		result = prime * result + ((cpfaluno == null) ? 0 : cpfaluno.hashCode());
+		result = prime * result + ((emailaluno == null) ? 0 : emailaluno.hashCode());
 		result = prime * result + ((idaluno == null) ? 0 : idaluno.hashCode());
-		result = prime * result
-				+ ((nomealuno == null) ? 0 : nomealuno.hashCode());
-		result = prime * result + ((vendas == null) ? 0 : vendas.hashCode());
+		result = prime * result + ((nomealuno == null) ? 0 : nomealuno.hashCode());
 		return result;
 	}
 
@@ -129,11 +102,6 @@ public class Aluno implements Serializable {
 			if (other.nomealuno != null)
 				return false;
 		} else if (!nomealuno.equals(other.nomealuno))
-			return false;
-		if (vendas == null) {
-			if (other.vendas != null)
-				return false;
-		} else if (!vendas.equals(other.vendas))
 			return false;
 		return true;
 	}

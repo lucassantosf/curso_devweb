@@ -1,7 +1,6 @@
 package br.com.academiaproject.modelo;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
 
 
@@ -15,9 +14,10 @@ public class Itemvenda implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer iditemvenda;
 
-	private Integer itemvendaqtd;
+	private int itemvendaqtd;
 
 	//bi-directional many-to-one association to Plano
 	@ManyToOne
@@ -36,13 +36,13 @@ public class Itemvenda implements Serializable {
 
 	public void setIditemvenda(Integer iditemvenda) {
 		this.iditemvenda = iditemvenda;
-	}	
-
-	public Integer getItemvendaqtd() {
-		return itemvendaqtd;
 	}
 
-	public void setItemvendaqtd(Integer itemvendaqtd) {
+	public int getItemvendaqtd() {
+		return this.itemvendaqtd;
+	}
+
+	public void setItemvendaqtd(int itemvendaqtd) {
 		this.itemvendaqtd = itemvendaqtd;
 	}
 
@@ -61,15 +61,13 @@ public class Itemvenda implements Serializable {
 	public void setVenda(Venda venda) {
 		this.venda = venda;
 	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
 				+ ((iditemvenda == null) ? 0 : iditemvenda.hashCode());
-		result = prime * result
-				+ ((itemvendaqtd == null) ? 0 : itemvendaqtd.hashCode());
+		result = prime * result + itemvendaqtd;
 		result = prime * result + ((plano == null) ? 0 : plano.hashCode());
 		result = prime * result + ((venda == null) ? 0 : venda.hashCode());
 		return result;
@@ -89,10 +87,7 @@ public class Itemvenda implements Serializable {
 				return false;
 		} else if (!iditemvenda.equals(other.iditemvenda))
 			return false;
-		if (itemvendaqtd == null) {
-			if (other.itemvendaqtd != null)
-				return false;
-		} else if (!itemvendaqtd.equals(other.itemvendaqtd))
+		if (itemvendaqtd != other.itemvendaqtd)
 			return false;
 		if (plano == null) {
 			if (other.plano != null)
@@ -106,5 +101,4 @@ public class Itemvenda implements Serializable {
 			return false;
 		return true;
 	}
-
 }

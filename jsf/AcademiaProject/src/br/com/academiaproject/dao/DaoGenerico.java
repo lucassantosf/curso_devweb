@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 public class DaoGenerico<T> {
-	public static final EntityManagerFactory factory = Persistence.createEntityManagerFactory("dawprojeto");
+	public static final EntityManagerFactory factory = Persistence.createEntityManagerFactory("dawmodelo");
 	
 	public static EntityManager getEntityManager()  {
 		return factory.createEntityManager();

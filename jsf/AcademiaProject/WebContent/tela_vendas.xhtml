@@ -5,11 +5,10 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Realizar Venda</title>
-</h:head>
-<h:body>
+
+<ui:composition template="/templatePrincipal.xhtml">
+<ui:define name="Titulo">Tela de Vendas</ui:define>
+
 <p:outputLabel>Tela Vendas</p:outputLabel>
 	<h:form id="formVenda">
 		<p:panel id="panel" header="Cadastrar Venda"
@@ -99,5 +98,5 @@
 			</p:submenu>
 	</p:menu>
 
-</h:body>
+</ui:composition>
 </html>

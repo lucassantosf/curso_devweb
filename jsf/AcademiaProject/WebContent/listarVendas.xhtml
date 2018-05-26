@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templatePrincipal.xhtml">
+<ui:define name="Titulo">Listagem de Vendas</ui:define>
+	
+	<h:form id="form2">
+		<p:messages id="messages" />
+
+		<p:dataTable id="tab2" value="#{vendaBean.listaVendas}" var="v"
+			emptyMessage="Nenhum registro incluido." paginator="true" rows="5"
+			paginatorPosition="top">
+
+			<p:column headerText="CÓDIGO" style="text-align: center"
+				sortBy="#{v.idvenda}">
+				<h:outputText value="#{v.idvenda}" />
+			</p:column>
+
+			<p:column headerText="Aluno" style="text-align: center"
+				sortBy="#{v.aluno.nomealuno}"
+				filterBy="#{v.aluno.nomealuno}">
+				<h:outputText value="#{v.aluno.nomealuno}" />
+			</p:column>
+
+			<p:column headerText="Data" style="text-align: center"
+				sortBy="#{v.datavenda}">
+				<h:outputText value="#{v.datavenda}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:outputText>
+			</p:column>
+
+
+			<p:column headerText="EXCLUIR" style="text-align: center">
+				<p:commandButton icon="ui-icon-trash" title="Excluir"
+					update="dlg" onclick="PF('confirmation').show();">
+					<f:setPropertyActionListener value="#{v}"
+						target="#{vendaBean.venda}" />
+				</p:commandButton>
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+
+
+
+	<p:dialog header="Deseja realmente excluir este registro?"
+		widgetVar="confirmation" modal="true" appendTo="@(body)"
+		resizable="false" responsive="true">
+		<h:form id="dlg">
+
+			<p:panelGrid id="infosProd" columns="2" style="margin-bottom:10px">
+				<p:outputLabel for="codigo" value="Código:" />
+				<p:inputText id="codigo" value="#{vendaBean.venda.idvenda}"
+					readonly="true" />
+				<p:outputLabel for="data" value="Data:" />
+				<p:inputText id="data" value="#{vendaBean.venda.datavenda}"
+					readonly="true">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</p:inputText>
+				<p:outputLabel for="cli" value="Cliente:" />
+				<p:inputText id="cli" value="#{vendaBean.venda.aluno.nomealuno}"
+					readonly="true" />
+				<p:commandButton id="btnSim" value="Sim"
+					oncomplete="PF('confirmation').hide(); retun false;"
+					action="#{vendaBean.excluirVenda}" update=":form2:tab2" />
+				<p:commandButton id="btnNao" value="Não"
+					onclick="PF('confirmation').hide();" type="button" />
+			</p:panelGrid>
+			<br />
+			<p:panelGrid  columns="1" style="margin-bottom:10px">
+				
+				<p:dataTable id="tab2" value="#{vendaBean.venda.itemvendas}" var="p"
+					emptyMessage="Nenhum registro incluido." paginator="true" rows="5"
+					paginatorPosition="top">
+
+					<p:column headerText="Quantidade" style="text-align: center"
+						sortBy="#{p.itemvendaqtd}">
+						<h:outputText value="#{p.itemvendaqtd}" />
+					</p:column>
+
+					<p:column headerText="Descrição do Produto"
+						style="text-align: center" sortBy="#{p.plano.descplano}"
+						filterBy="#{p.plano.descplano}">
+						<h:outputText value="#{p.plano.descplano}" />
+					</p:column>
+
+					<p:column headerText="Valor Unitário" style="text-align: center"
+						sortBy="#{p.plano.valorplano}">
+						<h:outputText value="#{p.plano.valorplano}">
+							<f:convertNumber pattern="#,##0.00"/>
+						</h:outputText>
+					</p:column>					
+				
+				</p:dataTable>				
+			</p:panelGrid>
+			
+		</h:form>	
+			
+	</p:dialog>
+	
+</ui:composition>
+</html>
